@@ -44,6 +44,8 @@ while i < 1000:
   print(i)
 ```
 3. Imprimir los números pares en forma descendente hasta 2 que son menores o iguales a un número natural n ≥ 2 dado
+
+*Sabemos que el número debe ser mayor o igual que dos, asi que mientras se cumpla esto, se deberá restar a i consecutivamente hasta llegar hasta dos, pero solo imprimiendo los números que complan con la condición de ser pares.*
 ```python
 n= int(input("Ingrese un número natural mayor o igual a dos: "))
 while n>=2:
@@ -55,17 +57,19 @@ while n>=2:
 4. En 2022 el país A tendrá una población de 25 millones de habitantes y el país B de 18.9 millones. Las tasas de crecimiento anual de la población serán de 2% y 3% respectivamente. Desarrollar un algoritmo para informar en que año la población del país B superará a la de A.
 
 ```python
-año: int = 2022
-A : float = 25
-B : float = 18.9
-while B<=A:
-    A+= (0.02*A) 
-    B+= (0.03*B)
-    año+=1
+año: int = 2022 #Inicialización año
+A : float = 25 #Inicialización A
+B : float = 18.9 #Inicialización B
+while B<=A:  #Mientras B sea menor que A 
+    A+= (0.02*A) #Multiplica A por 0.02 y súmale al valor actual de A
+    B+= (0.03*B) #Multiplica B por 0.03 y súmale al valor actual de B
+    año+=1 #Suma 1 al año actual, consecutivamente 
 
 print("Para el año " + str(año)  +  " la población B superará a la población A")
 ```
 5. Imprimir el factorial de un número natural n dado.
+
+*Para este punto se utilizó ```while``` de tal forma que se pudiera iterar con respecto a un valor dado. Este valor se va a restar consecutivamente hasta llegar a uno a la medida que se multiplican todos los resultados*
 ```python
 def calcular_factorial(n: int) -> int:
     if n == 0 or n == 1:
@@ -83,6 +87,8 @@ if __name__ == "__main__":
 print("El factorial de " + str(n) + " es " + str(factorial))
  ```
 6. Implementar un algoritmo que permita adivinar un número dado de 1 a 100, preguntando en cada caso si el número es mayor, menor o igual.
+
+*Para este punto se importó la función ```Random``` la cual nos dará un número aleatorio. Luego de pedir a la persona que piense en un número, este número saldrá y la persona tendrá que decir si es "menor", "igual" o "mayor". Si el número dado es mayor o menor, se hace una condición para que el rango de números aleatorios se reduzca, de tal manera que se pueda adivinar el número*
  
  ```python
 import random
@@ -108,6 +114,8 @@ while bandera or respuesta != "igual":
       print("Recuerda escribir todo en minúsculas, revisa que hayas escrito correctamente la palabra")
  ```
 7.Implementar un programa que ingrese un número de 2 a 50 y muestre sus divisores.
+
+*Para este punto se plantearon las condiciones, en las que si el residuo entre una variable i y una variable n da cero, entonces la variable n será divisor de la variable i. Primero se inicializan las variables, luego nos aseguramos de que la variable n se incrementa en uno para poder verificar cada número como posible divisor y por último se plantea la condición antes mencionada para luego imprimir el resultado*
 ```python
 n = 0
 i = int(input("ingrese un número natural entre 2 y 50: "))
