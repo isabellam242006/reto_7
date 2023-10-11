@@ -11,16 +11,14 @@ while i < 100:
 ```
 ```mermaid
 flowchart TD
-
-    A(Inicio) 
-    A --> B[i=0]
-    B-->C[i=i+1]
-    C --> D{i = 100?}
-    D-->|Sí| E[n = i**2] 
-    D ---->|No| C
-    E --> F[Imprimir lista desde i=0 hasta i=100, junto con 
-    su respectivo n]
-    F --> G(Fin)
+A(Inicio)
+A --> B[i=0]
+B-->C[i=i+1]
+C --> D{i = 100?}
+D-->|Sí| E[n = i**2]
+D ---->|No| C
+E --> F[Imprimir lista desde i=0 hasta i=100, junto con su respectivo n]
+F --> G(Fin)
     
     
 ```
