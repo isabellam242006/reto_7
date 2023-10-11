@@ -41,16 +41,58 @@ while i < 1000:
     continue
   print(i)
 ```
+```mermaid
+flowchart TD
+A(Inicio)
+    A --> B[i=0]
+    B --> C[i = i+1]
+    C--> D{i%2!=0?}
+    D --> |Sí|E[Añadir a la lista]
+    D --> |No|F[Descartar de la lista]
+    E --> G{i = 999?}
+    F -->G
+    G --> |Sí|H[Imprimir lista]
+    G --> |No|C
+    H --> I[i=1]
+    I --> J[i = i+1]
+    J--> K{i%2=0?}
+    K --> |Sí|L[Añadir a la lista]
+    K --> |No|M[Descartar de la lista]
+    L --> N{i = 1000?}
+    M -->N
+    N --> |Sí|O[Imprimir lista]
+    N --> |No|J
+    O --> P(Fin)
+```
+   
 3. Imprimir los números pares en forma descendente hasta 2 que son menores o iguales a un número natural n ≥ 2 dado
 
-*Sabemos que el número debe ser mayor o igual que dos, asi que mientras se cumpla esto, se deberá restar a i consecutivamente hasta llegar hasta dos, pero solo imprimiendo los números que complan con la condición de ser pares.*
+*Sabemos que el número debe ser mayor o igual que dos, asi que mientras se cumpla esto, se deberá restar a i consecutivamente hasta llegar hasta dos, pero solo imprimiendo los números que complan con la condición de ser pares. Es decir que n%2 = 0 se cumpla. El bucle ```n-=1``` debe ponerse luego del ```print``` para que también se imprima el número dado en caso tal de que fuera par*
 ```python
-n= int(input("Ingrese un número natural mayor o igual a dos: "))
-while n>=2:
-    n -=1
-    if n%2!=0:
-        continue
-    print(n)
+n = int(input("Ingrese un número natural mayor o igual a dos: "))
+
+if n >= 2:
+    while n >= 2:
+        if n % 2 == 0:
+            print(n)
+        n -= 1
+else:
+    print("El número debe ser mayor o igual a dos.")
+```
+```mermaid
+flowchart TD
+A(Inicio)
+A --> B[n = Ingresar número mayor o igual a 2]
+B --> C{n >= 2?}
+C --> |Sí|D[n=n-1]
+D --> C
+C --> |No|E[Lista de n]
+E --> F{n%2=0?}
+F --> |Sí|G[Conservar n en la lista]
+F -->|No|H[Descartar n de la lista]
+G --> I[Imprimir lista]
+H --> I
+I --> J(Fin)
 ```
 4. En 2022 el país A tendrá una población de 25 millones de habitantes y el país B de 18.9 millones. Las tasas de crecimiento anual de la población serán de 2% y 3% respectivamente. Desarrollar un algoritmo para informar en que año la población del país B superará a la de A.
 
@@ -67,7 +109,7 @@ print("Para el año " + str(año)  +  " la población B superará a la població
 ```
 5. Imprimir el factorial de un número natural n dado.
 
-*Para este punto se utilizó ```while``` de tal forma que se pudiera iterar con respecto a un valor dado. Este valor se va a restar consecutivamente hasta llegar a uno a la medida que se multiplican todos los resultados*
+*Para este punto se utilizó ```while``` de tal forma que se pudiera iterar con respecto a un valor dado. Este valor se va a restar consecutivamente hasta llegar a uno a la medida que se multiplican todos los resultados. Adicional se tiene la condición de que si n, que es el valor dado, es igual a 0 o 1, automáticamente el factorial será 1.*
 ```python
 def calcular_factorial(n: int) -> int:
     if n == 0 or n == 1:
@@ -86,7 +128,7 @@ print("El factorial de " + str(n) + " es " + str(factorial))
  ```
 6. Implementar un algoritmo que permita adivinar un número dado de 1 a 100, preguntando en cada caso si el número es mayor, menor o igual.
 
-*Para este punto se importó la función ```Random``` la cual nos dará un número aleatorio. Luego de pedir a la persona que piense en un número, este número saldrá y la persona tendrá que decir si es "menor", "igual" o "mayor". Si el número dado es mayor o menor, se hace una condición para que el rango de números aleatorios se reduzca, de tal manera que se pueda adivinar el número*
+*Para este punto se importó la función ```Random``` la cual nos dará un número aleatorio. Luego de pedir a la persona que piense en un número, este número saldrá y la persona tendrá que decir si es "menor", "igual" o "mayor". Si el número dado es mayor o menor, se hace una condición para que el rango de números aleatorios se reduzca, de tal manera que se pueda adivinar el número. Si el número dado es igual al número aleatorio entonces el programa lo ha adivinado. Adicionalmente se usó una bandera para que el programa se ejecute correctamente y pueda iterarse cuantas veces sea necesario.*
  
  ```python
 import random
@@ -113,7 +155,7 @@ while bandera or respuesta != "igual":
  ```
 7.Implementar un programa que ingrese un número de 2 a 50 y muestre sus divisores.
 
-*Para este punto se plantearon las condiciones, en las que si el residuo entre una variable i y una variable n da cero, entonces la variable n será divisor de la variable i. Primero se inicializan las variables, luego nos aseguramos de que la variable n se incrementa en uno para poder verificar cada número como posible divisor y por último se plantea la condición antes mencionada para luego imprimir el resultado*
+*Para este punto se plantearon las condiciones, en las que si el residuo entre una variable i y una variable n da cero, entonces la variable n será divisor de la variable i. Primero se inicializan las variables, luego nos aseguramos de que la variable n se incrementa en uno para poder verificar cada número como posible divisor y por último se plantea la condición antes mencionada para luego imprimir el resultado.También nos aseguramos de que i esté dentro del rango deseado.*
 ```python
 n = 0
 i = int(input("ingrese un número natural entre 2 y 50: "))
@@ -121,19 +163,19 @@ i = int(input("ingrese un número natural entre 2 y 50: "))
 while n<=i:
   n+=1
   if i%n==0 and i!=0 and i!=1 and i<50:
-    print(n, end=", ")
+    print(n, end=",")
 
 if i == 0 or i==1:
   print("Ingrese un número mayor o igual a dos ")
 elif i >50:
   print("Ingrese un menor o igual a cincuenta ")
   
-print("\b\b")
+print(" son los divisores de " + str(i))
 ```
 8. Implementar el algoritmo que muestre los números primos del 1 al 100. Nota: use funciones
 
 ```python
-ef calcular_numeros_primos(n):  #Definimos función
+def calcular_numeros_primos(n):  #Definimos función
     while n <= 100:              #Hasta que n sea menor o igual que 100
         i = 2                    #Definimos i desde 2, ya que si lo definimos desde 1 sabemos que no podremos saber si n es un número es primo
         es_primo = True          #Definimos la función como verdadera
@@ -150,4 +192,6 @@ if __name__ == "__main__":
     n = 2                        #Definimos n
     calcular_numeros_primos(n)
 ```
+
+ 
 
